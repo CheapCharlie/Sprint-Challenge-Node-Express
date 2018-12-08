@@ -68,6 +68,20 @@ server.get('/api/projects/:id', (req, res) => {
                 .json({error: "This project could not be selected." })
         })
 })
+server.get('/api/projects/project-actions/:id', (req, res) => {
+    projectModel.getProjectActions(req.params.id)
+        .then(response => {
+            // console.log(response, 'response')
+            res
+                .status(200)
+                .json(response)
+        })
+        .catch(error => {
+            res
+                .status(500)
+                .json({error: "This project's action(s) could not be selected." })
+        })
+})
 
 server.post('/api/actions', (req, res) => {
     actionModel.insert(req.body)
@@ -81,6 +95,20 @@ server.post('/api/actions', (req, res) => {
             res
                 .status(500)
                 .json({error: "This action(s) could not be added." })
+        })
+})
+server.post('/api/projects', (req, res) => {
+    projectModel.insert(req.body)
+        .then(response => {
+            // console.log(response, 'response')
+            res
+                .status(200)
+                .json(response)
+        })
+        .catch(error => {
+            res
+                .status(500)
+                .json({error: "This project(s) could not be added." })
         })
 })
 
