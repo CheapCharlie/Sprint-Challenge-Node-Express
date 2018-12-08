@@ -141,6 +141,35 @@ server.put('/api/projects/:id', (req, res) => {
         })
 })
 
+server.delete('/api/actions/:id', (req, res) => {
+    actionModel.remove(req.params.id)
+        .then(response => {
+            // console.log(response, 'response')
+            res
+                .status(200)
+                .json(response)
+        })
+        .catch(error => {
+            res
+                .status(500)
+                .json({error: "This action could not be deleted at this time." })
+        })
+})
+server.delete('/api/projects/:id', (req, res) => {
+    projectModel.remove(req.params.id)
+        .then(response => {
+            // console.log(response, 'response')
+            res
+                .status(200)
+                .json(response)
+        })
+        .catch(error => {
+            res
+                .status(500)
+                .json({error: "This project could not be deleted at this time." })
+        })
+})
+
 server.listen(Port, () => {
     console.log(`Server at Port ${Port} is up an running!`)
 });
