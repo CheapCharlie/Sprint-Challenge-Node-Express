@@ -112,6 +112,35 @@ server.post('/api/projects', (req, res) => {
         })
 })
 
+server.put('/api/actions/:id', (req, res) => {
+    actionModel.update(req.params.id, req.body)
+        .then(response => {
+            // console.log(response, 'response')
+            res
+                .status(200)
+                .json(response)
+        })
+        .catch(error => {
+            res
+                .status(500)
+                .json({error: "This action could not be updated at this time." })
+        })
+})
+server.put('/api/projects/:id', (req, res) => {
+    projectModel.update(req.params.id, req.body)
+        .then(response => {
+            // console.log(response, 'response')
+            res
+                .status(200)
+                .json(response)
+        })
+        .catch(error => {
+            res
+                .status(500)
+                .json({error: "This project could not be updated at this time." })
+        })
+})
+
 server.listen(Port, () => {
     console.log(`Server at Port ${Port} is up an running!`)
 });
