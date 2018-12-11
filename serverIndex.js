@@ -88,7 +88,7 @@ server.post('/api/actions', (req, res) => {
         .then(response => {
             // console.log(response, 'response')
             res
-                .status(200)
+                .status(201)
                 .json(response)
         })
         .catch(error => {
@@ -102,7 +102,7 @@ server.post('/api/projects', (req, res) => {
         .then(response => {
             // console.log(response, 'response')
             res
-                .status(200)
+                .status(201)
                 .json(response)
         })
         .catch(error => {
